@@ -216,7 +216,7 @@ st.markdown("""
 <div class="app-header">
     <div>
         <div class="app-title">ChurnSense</div>
-        <div class="app-subtitle">Customer Retention & Risk Intelligence Platform — behavioral telemetry forecasting powered by an optimized XGBoost classifier.</div>
+        <div class="app-subtitle">Customer Retention & Risk Intelligence — behavioral telemetry forecasting powered by an optimized XGBoost classifier.</div>
     </div>
     <div>
         <span class="status-badge">● Engine: XGBoost Active</span>
