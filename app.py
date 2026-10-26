@@ -281,7 +281,6 @@ with tabs[0]:
         for idx, row in top_kpi_drivers.iterrows():
             feat = row["feature"]
             imp_pct = row["importance"] * 100
-            avg_val = df[feat].mean() if feat in df.columns else 0.0
 
             with driver_cols[idx]:
                 st.markdown(f"""
@@ -289,7 +288,6 @@ with tabs[0]:
                     <div class="kpi-label">Rank #{idx + 1} Driver</div>
                     <div class="kpi-value" title="{feat}">{feat}</div>
                     <div class="kpi-subtext"><b>{imp_pct:.1f}%</b> Attribution Weight</div>
-                    <div style="font-size: 0.75rem; color: #000000; margin-top: 4px;">Dataset Mean: {avg_val:.2f}</div>
                 </div>
                 """, unsafe_allow_html=True)
 
