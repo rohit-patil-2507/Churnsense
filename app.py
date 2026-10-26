@@ -34,44 +34,74 @@ st.markdown("""
         width: 100% !important;
     }
 
-    /* 2. Top Executive Header with Fluid Typography */
+    /* 2. Top Executive Header with Enterprise Slate Gradient & Ambient Shadow */
     .app-header {
-        background: #000000;
-        border-radius: 10px;
-        padding: clamp(16px, 2.5vw, 24px) clamp(18px, 3vw, 28px);
+        background: linear-gradient(135deg, #0B1120 0%, #0F172A 60%, #020617 100%);
+        border-radius: 12px;
+        padding: clamp(20px, 2.6vw, 28px) clamp(20px, 3vw, 32px);
         color: #FFFFFF;
         margin-bottom: 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid #000000;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.35), 0 8px 10px -6px rgba(15, 23, 42, 0.25);
         gap: 16px;
     }
     .app-title {
-        font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+        font-size: clamp(1.4rem, 2.6vw, 1.85rem);
         font-weight: 800;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.025em;
         color: #FFFFFF !important;
         margin-bottom: 4px;
     }
     .app-subtitle {
-        font-size: clamp(0.82rem, 1.3vw, 0.9rem);
-        color: #E2E8F0 !important;
-        line-height: 1.5;
+        font-size: clamp(0.84rem, 1.3vw, 0.92rem);
+        color: #94A3B8 !important;
+        line-height: 1.55;
         margin: 0;
     }
+
+    /* Green Pulse Dot Animation */
+    @keyframes pulse-dot {
+        0% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            transform: scale(0.95);
+        }
+        70% {
+            box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+            transform: scale(1.15);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            transform: scale(0.95);
+        }
+    }
+
+    .pulse-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #22C55E;
+        border-radius: 50%;
+        animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
     .status-badge {
-        background: #0F172A;
-        border: 1px solid #475569;
-        color: #38BDF8 !important;
-        font-size: 0.78rem;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(34, 197, 94, 0.45);
+        color: #4ADE80 !important;
+        font-size: 0.8rem;
         font-weight: 700;
-        padding: 6px 14px;
-        border-radius: 6px;
+        letter-spacing: 0.02em;
+        padding: 8px 16px;
+        border-radius: 9999px;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         white-space: nowrap;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
     }
 
     /* 3. Structured Metric Cards with Minimal Black Border */
@@ -171,10 +201,10 @@ st.markdown("""
         .app-header {
             flex-direction: column !important;
             align-items: flex-start !important;
-            padding: 16px 18px !important;
+            padding: 18px 20px !important;
         }
         .status-badge {
-            margin-top: 4px;
+            margin-top: 6px;
         }
         div[data-testid="column"] {
             width: 100% !important;
@@ -211,7 +241,7 @@ except Exception as e:
     st.error(f"Error loading system assets: {e}")
     st.stop()
 
-# Responsive Header Component
+# Responsive Executive Header Component with Blinking Green Pulse
 st.markdown("""
 <div class="app-header">
     <div>
@@ -219,7 +249,10 @@ st.markdown("""
         <div class="app-subtitle">Customer Retention & Risk Intelligence — behavioral telemetry forecasting powered by an optimized XGBoost classifier.</div>
     </div>
     <div>
-        <span class="status-badge">● Engine: XGBoost Active</span>
+        <span class="status-badge">
+            <span class="pulse-indicator"></span>
+            Engine: XGBoost Active
+        </span>
     </div>
 </div>
 """, unsafe_allow_html=True)
